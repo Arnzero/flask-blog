@@ -16,6 +16,15 @@ import flask
 def home():
     return render_markdown('index.md')
 
+
+@app.route("/all")
+def all():
+    return from os import walk
+        for(dirpath, dirnames, filenames) in walk(r'C:\Users\afh146\Desktop\bin\flask-blog\app\views'):
+         for file in filenames:
+           print(file)
+
+
 #generic page
 @app.route("/<view_name>")
 
