@@ -23,7 +23,7 @@ def all():
     view_data["pages"] = []
     temp = ''
 
-    for(dirpath, dirnames, filenames) in walk(r'C:\Users\arnze\Desktop\flask2.0\app\templates'):
+    for(dirpath, dirnames, filenames) in walk(r'C:\Users\arnze\Desktop\flask-blog\app\templates'):
         for file in filenames:
          view_data["pages"].append(file.rsplit(".",1)[0])
     return render_template("all.html", data=view_data)
