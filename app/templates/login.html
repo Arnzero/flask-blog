@@ -11,17 +11,18 @@
         User Name:
     </div>
     <div>
-        <input type="text" name="user_name" />
+        <input type="text" name="user_name" value ="{{request.form.user_name}}" />
     </div>
     <div>
         Password:
     </div>
     <div>
-        <input type="password" name="password" />
+        <input type="password" name="password" value = "{{request.form.password}}" />
     </div> 
     <div>
         <button type="submit">Log In</button>
     </div>
     </form>
+    <p>{{error}}</p>
 </body>
 </html>
