@@ -66,18 +66,30 @@ def login():
             c.execute("SELECT pyUserName FROM pyUsers")
         return c.fetchone()
 
-    def get_PassW(u_passw):
+    def get_PassW():
         with conn:
             c.execute("SELECT pyPassword FROM pyUsers")
         return c.fetchone()
+   
     
     error =""
+    un = get_userName()
+    pww = get_PassW()
+    conn.close()
+    if un[0] == 'admin':
+        print("match")
+    
+    print(un[0])
+    
+
+
+
     if request.method == 'POST':
-        if request.form['user_name'] != get_userName() or request.form['password'] != get_PassW():
-            error ='INVALID CREDENTAIALS'
+        if request.form['user_name'] != un[0] or request.form['password'] != pww[0]:
+            error ="invalid credentials!"
         else:
             session['logged_in'] = True
-            return redirect(url_for('about'))
+            return redirect(url_for('home'))
     return render_template("login.html", error=error)
 
 @app.route("/favicon.ico")

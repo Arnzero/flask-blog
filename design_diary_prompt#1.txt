@@ -1,0 +1,55 @@
+Adrian Haro
+CS 232
+2/15/2020
+
+Prior to this class I have been exposed to Python basics,
+html5, css3, Data Structures and Algorithms. I decided to
+break up this assignment into 3 phases. Phase 1 was about
+making the connections of interactions from end-point to end-point.
+Phase 2 was about learning the syntax and the structure 
+between flask to jinja to html. I came in confident in 
+picking up python again but I was still having issues with
+indentation the first week. The 3rd phase is mostly about refining
+the blog with images, text and removing unecessary code.
+
+I am concurrently taking web apps and being a month into that class
+I am making the connections on how web pages work.
+Now that the assignment is past due I feel like I am better understanding
+flask. I took too long to settle in but I do plan to work on it through out
+the semester.
+
+My concern with having a FULL template code given out is that I'd just copy it 
+and not learn what it actually is doing versus struggling to figure out
+the nuances of this homework but at the same time I wasn't able 
+to pick this assignment up until after having more hand holding exposure
+in web apps. I think the first assignment could be an intro to python basics
+with a short due date and then the blog for those taking web apps concurrently.
+
+My recommendation is to enforce students the idea about getting
+comfortable with break points and running through code. I didn't start
+doing this much until past 1.5 weeks.
+
+I am currently helping a friend that is taking Java at College of the 
+Redwoods. I have experienced that even tho I feel like I give 
+accurate and well defined explanations, he still steps back and 
+asks me to explain it to him like if he was 5 years old and in my 
+head I feel as if I watered a hydrophobic sponge.
+
+I've been wondering why words sometimes don't seem to be enough, 
+I have an idea for an approach but it is not practical.
+I'll ask him what he's trying to achieve and then ask him
+to explain his approach and that's how I catch his invalid
+pre-conceived notions about an idea.
+
+Sometimes It's not the ideas that are presented that are unclear
+but rather how people interpret it or confuse something in between.
+
+For example, watching a youtube video or a professor go over a problem
+makes the viewer feel like they "Get it" but as soon as
+the video or lecture is over, It turns out not to be the case.
+
+I really like the buddy system as it forces students to interact
+and share their interpretations and clear up misconceptions.
+
+Comments: I am jelous of the mobile apps students and Data Structures students
+    working with C#, I wish I could take all your classes.

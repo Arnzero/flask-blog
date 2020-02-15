@@ -1,0 +1,14 @@
+Adrian Haro
+CS 232
+Buddy Report #1
+
+The team I was integrated in consisted of myself and
+ David Uribe. David gets 5 stars in my book for various reasons.
+  He displayed persistance and geniunely cares to problem solve. 
+  David is more of a beginner and I'm more experienced by a year 
+  or so which makes me feel like I should be carrying both of us. 
+  We both got stuck and discussed many logical options and took 
+  the time to explain to each other possible approaches to this 
+  assignment. I gave him advice on how to approach his "all route"
+   and sql management. He gave me advice on how to the login should 
+   work by helping me with boiler-plate code.
