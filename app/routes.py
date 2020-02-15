@@ -6,6 +6,12 @@ from flask import render_template, render_template_string, request, session, url
 from app.blog_helpers import render_markdown
 from os import walk
 import os
+#from users import user
+#from app.python-sqlite
+import sqlite3
+#from users import Users
+
+
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
@@ -26,6 +32,10 @@ def home():
 
 
 
+@app.route("/formTest")
+def formTest():
+    return render_template("formTest.html")
+
 @app.route('/all')
 def all():
     view_data = {}
@@ -42,13 +52,32 @@ def all():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    conn = sqlite3.connect('users.db')
+
+    c = conn.cursor()
+
+    def insert_user(usr):
+        with conn:
+            c.execute("INSERT INTO pyUsers VALUES (:UserLogin, :PW)", {'UserLogin':usr.UserLogin, 'PW':usr.PW})
+
+
+    def get_userName():
+        with conn:
+            c.execute("SELECT pyUserName FROM pyUsers")
+        return c.fetchone()
+
+    def get_PassW(u_passw):
+        with conn:
+            c.execute("SELECT pyPassword FROM pyUsers")
+        return c.fetchone()
+    
     error =""
     if request.method == 'POST':
-        if request.form['user_name'] !='admin' or request.form['password'] != 'password':
+        if request.form['user_name'] != get_userName() or request.form['password'] != get_PassW():
             error ='INVALID CREDENTAIALS'
         else:
             session['logged_in'] = True
-            return redirect(url_for('edit', 'about'))
+            return redirect(url_for('about'))
     return render_template("login.html", error=error)
 
 @app.route("/favicon.ico")
