@@ -30,6 +30,9 @@ import flask
 def home():
     return render_markdown('index.md')
 
+@app.route("/veganCelebrities")
+def veganCelebrities():
+    return render_template("veganCelebrities.html")
 
 
 @app.route("/formTest")
