@@ -8,18 +8,26 @@
 </head>
 
 <body>
-    <form method="POST" placeholder ="POST" action="/edit/{{page_name}}">
-        <textarea name="content" placeholder ="Enter Content" rows="40" cols="80">
-        content {{page_name}}
+    <form method="POST"  action="/edit/{{data['page_name']}}">
+        <input type="text"  value="{{data['page_name']}}" name='page_name' />
+        <hr />
+        ValueIs {{data['page_name']}} <br />
+        ReqVal <strong> {{request.form['page_name']}}</strong> <br />
+        data['page_name'] = request.form['page_name']
+        <hr />
+        <legend>Source Code</legend> 
+        <textarea name="content"  rows="40" cols="70">
+            {{data['content']}}
+
         </textarea>
-        {% if page_name == "" %}
+         {% if data['page_name'] == "" %}
         <button type="submit">Create</button>
         {% else %}
         <button type="submit">Edit</button>
         {% endif %}
 
 
-        info {{output_page}}
+        
         
     </form>
 </body>

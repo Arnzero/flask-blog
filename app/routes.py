@@ -118,26 +118,41 @@ def render_page(view_name):
     view_data = {} #create empty dictionary
     return render_template_string(html, view_data = session)
 
-
-
-@app.route("/edit/<page_name>")
-def edit(page_name):
-    view_data = {}
-    view_data["pages"] = []
+@app.route("/edit/<page_name>", methods=['POST','GET','PUT'])
+def edit_page(page_name):
 
     data = {}
-    
-
+    data['page_name'] = request.form['page_name']
     for(dirpath, dirnames, filenames) in walk(r'C:\Users\arnze\Desktop\flask-blog\app\templates'):
         for file in filenames:
-         view_data["pages"].append(file.rsplit(".",1)[0])
-         data[file.rsplit(".",1)[0]] = file
+            data[file.rsplit(".",1)[0]] = file
+
     html = ""
-    #data[pages] = render_markdown(page_name + ".md" )
     path = os.path.join(r'C:\Users\arnze\Desktop\flask-blog\app\templates', data[page_name])
     with open(path) as html_file:
         html = html_file.read()
-    #html = render_markdown(page)
-        
+    data['content'] = render_template_string(html)
+            
     
-    return render_template("edit.html", page_name=render_template_string(html))
+    return render_template("edit.html",data=data)   
+
+
+@app.route("/edit/", methods=['POST','GET'])
+def edit():
+
+    data = {}
+    data['page_name'] = 'about'
+    data['content']= "html goes here"
+    for(dirpath, dirnames, filenames) in walk(r'C:\Users\arnze\Desktop\flask-blog\app\templates'):
+        for file in filenames:
+            data[file.rsplit(".",1)[0]] = file
+    return render_template("edit.html", data =data)
+
+   
+
+    
+  
+
+    
+
+
