@@ -11,6 +11,8 @@ import os
 import sqlite3
 #from users import Users
 
+import codecs
+
 
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -118,35 +120,62 @@ def render_page(view_name):
     view_data = {} #create empty dictionary
     return render_template_string(html, view_data = session)
 
-@app.route("/edit/<page_name>", methods=['POST','GET','PUT'])
-def edit_page(page_name):
-
-    data = {}
-    data['page_name'] = request.form['page_name']
-    for(dirpath, dirnames, filenames) in walk(r'C:\Users\arnze\Desktop\flask-blog\app\templates'):
-        for file in filenames:
-            data[file.rsplit(".",1)[0]] = file
-
-    html = ""
-    path = os.path.join(r'C:\Users\arnze\Desktop\flask-blog\app\templates', data[page_name])
-    with open(path) as html_file:
-        html = html_file.read()
-    data['content'] = render_template_string(html)
-            
-    
-    return render_template("edit.html",data=data)   
-
-
-@app.route("/edit/", methods=['POST','GET'])
+@app.route("/edit/", methods = ['GET','POST'])
 def edit():
+    view_data = {}
+    view_data['page_name'] = ""
+    view_data['content'] = "content etc."
+    dir_path = 'app/templates'
+    edit_page = 'edit.html'
+    
 
-    data = {}
-    data['page_name'] = 'about'
-    data['content']= "html goes here"
+    return render_template(edit_page, data=view_data)
+
+@app.route("/edit/<view_name>", methods=['GET', 'POST'])
+def edit_page(view_name):
+
+    # Acknowledge all the files in directory
+    fileAlias = {}
     for(dirpath, dirnames, filenames) in walk(r'C:\Users\arnze\Desktop\flask-blog\app\templates'):
         for file in filenames:
-            data[file.rsplit(".",1)[0]] = file
-    return render_template("edit.html", data =data)
+            fileAlias[file.rsplit(".",1)[0]] = file
+
+    # Acknowledge the page to be edit
+    view_data = {}
+    #view_name = view_name.rsplit(".",1)[0]
+    view_data['page_name'] = view_name
+    view_edit = 'edit.html'
+    
+    dir_path = 'app/templates'
+
+    # Form an absolute address to project files
+    path = os.path.join(dir_path, fileAlias[view_name])
+
+
+    tempfile = open(path, "r")
+    contents = tempfile.read()
+    wrd = ""
+    ff = codecs.open( path, "r", "utf-8")
+    wrd = ff.read()
+    view_data["content"] = render_template_string(fileAlias[view_name])
+    tempfile.close()
+
+    # If we came from POST, write to file from 'form'
+    if request.method == 'POST':
+        f = open(path, "w")
+        updated_content = request.values["content"]
+        print (updated_content)
+        f.write(str(updated_content))
+        f.close()
+        path = os.path.join(dir_path, fileAlias[request.values['page_name']] )
+    
+        # Read content from form
+        #view_data["content"] = request.values["content"]
+
+
+    return render_template(view_edit, data=view_data)
+
+   
 
    
 

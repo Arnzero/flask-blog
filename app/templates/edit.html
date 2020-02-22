@@ -9,14 +9,17 @@
 
 <body>
     <form method="POST"  action="/edit/{{data['page_name']}}">
+        <label > Name of <em> file:</em> <br />
         <input type="text"  value="{{data['page_name']}}" name='page_name' />
+        </label>
         <hr />
         ValueIs {{data['page_name']}} <br />
         ReqVal <strong> {{request.form['page_name']}}</strong> <br />
+        why is it adding lines {{request.form['content']}} <br />
         data['page_name'] = request.form['page_name']
         <hr />
         <legend>Source Code</legend> 
-        <textarea name="content"  rows="40" cols="70">
+        <textarea name="content">
             {{data['content']}}
 
         </textarea>
